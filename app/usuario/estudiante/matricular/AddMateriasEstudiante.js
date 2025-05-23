@@ -7,18 +7,19 @@ export default function AddMateriasForm({ usuarioID }) {
     const [materias, setMaterias] = useState([]);
     const [materiaID, setMateriaID] = useState("");
     const router = useRouter();
+    const apiUrl = process.env.NEXT_API;
     
     useEffect(() => {
         fetchApi();
     }, []);
     
-    const fetchApi = async () => { await fetch(`http://localhost:8080/api/materias`)
+    const fetchApi = async () => { await fetch(`${apiUrl}/api/materias`)
         .then(res => res.json())
         .then(data => setMaterias(data))
     }
 
     const fetchMaterias = async () => {
-        const res = await fetch(`http://localhost:8080/api/usuarios/${usuarioID}/materias`)
+        const res = await fetch(`${apiUrl}/api/usuarios/${usuarioID}/materias`)
         const data = await res.json()
         setMaterias(data)
     }
@@ -41,7 +42,7 @@ export default function AddMateriasForm({ usuarioID }) {
             return;
         }
 
-        try {await fetch(`http://localhost:8080/api/materias/${materiaID}/agregar-estudiante/${usuarioID}`, {
+        try {await fetch(`${apiUrl}/api/materias/${materiaID}/agregar-estudiante/${usuarioID}`, {
             method: "POST",
         });
         

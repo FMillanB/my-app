@@ -4,13 +4,14 @@ import { useState, useEffect } from 'react';
 
 export default function FetchMateriasEstudiante({ materiaID }) {
     const [estudiantes, setEstudiantes] = useState([]);
+    const apiUrl = process.env.NEXT_API;
 
     useEffect(() => { 
         fetchMateria()
     }, [materiaID])
     
     const fetchMateria = async () => {
-        const res = await fetch(`http://localhost:8080/api/materias/${materiaID}`)
+        const res = await fetch(`${apiUrl}/api/materias/${materiaID}`)
         const data = await res.json()
         setEstudiantes(data.estudiantes)
     }

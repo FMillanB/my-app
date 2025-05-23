@@ -5,8 +5,9 @@ import { cookies } from 'next/headers';
 export async function loginUsuario(_, formData) {
   const user = formData.get('user');
   const password = formData.get('password');
+  const apiUrl = process.env.NEXT_API;
 
-  const res = await fetch('http://localhost:8080/api/usuarios');
+  const res = await fetch(`${apiUrl}/api/usuarios`);
   const users = await res.json();
 
   const found = users.find(

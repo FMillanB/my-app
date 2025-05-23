@@ -7,10 +7,11 @@ import { useRouter } from 'next/navigation';
 export default function FetchMaterias({ usuarioID }) {
   const [materias, setMaterias] = useState([]);
   const router = useRouter();
+  const apiUrl = process.env.NEXT_API;
 
   useEffect(() => {
     const fetchMaterias = async () => {
-      const res = await fetch(`http://localhost:8080/api/usuarios/${usuarioID}/materiasImpartidas`)
+      const res = await fetch(`${apiUrl}/api/usuarios/${usuarioID}/materiasImpartidas`)
       const data = await res.json()
       setMaterias(data)
     }

@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react';
 
 export default function FetchMateriasEstudiante({ usuarioID }) {
   const [materias, setMaterias] = useState([]);
+  const apiUrl = process.env.NEXT_API;
 
   useEffect(() => {
     const fetchMaterias = async () => {
-      const res = await fetch(`http://localhost:8080/api/usuarios/${usuarioID}/materias`)
+      const res = await fetch(`${apiUrl}/api/usuarios/${usuarioID}/materias`)
       const data = await res.json()
       setMaterias(data)
     }
@@ -15,14 +16,14 @@ export default function FetchMateriasEstudiante({ usuarioID }) {
   }, [usuarioID])
 
   const fetchApi = async () => {
-    const res = await fetch(`http://localhost:8080/api/usuarios/${usuarioID}/materias`)
+    const res = await fetch(`${apiUrl}/api/usuarios/${usuarioID}/materias`)
     const data = await res.json()
     setMaterias(data)
   }
 
   const handleDelete = async (id) => {
     if (!confirm("¿Estás seguro de que deseas eliminar esta materia?")) return;
-    await fetch(`http://localhost:8080/api/materias/${id}/eliminar-estudiante/${usuarioID}`, {
+    await fetch(`${apiUrl}/api/materias/${id}/eliminar-estudiante/${usuarioID}`, {
       method: "DELETE",
     });
     fetchApi();

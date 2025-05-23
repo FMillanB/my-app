@@ -9,18 +9,19 @@ export default function AddMateriasForm() {
     const [profesores, setProfesores] = useState([]);
     const [materias, setMaterias] = useState([]);
     const router = useRouter();
+    const apiUrl = process.env.NEXT_API;
     
     useEffect(() => {
         fetchProfesores();
         fetchMaterias();
     }, []);
 
-    const fetchProfesores = async () => { await fetch("http://localhost:8080/api/usuarios")
+    const fetchProfesores = async () => { await fetch(`${apiUrl}/api/usuarios`)
         .then(res => res.json())
         .then(data => setProfesores(data.filter(user => user.rol === "PROFESOR")));
     }
 
-    const fetchMaterias = async () => { await fetch("http://localhost:8080/api/materias")
+    const fetchMaterias = async () => { await fetch(`${apiUrl}/api/materias`)
     .then(res => res.json())
     .then(data => setMaterias(data))
     }
@@ -36,7 +37,7 @@ export default function AddMateriasForm() {
 
         const profesor = profesores.filter(user => user.id === Number(profesorID))[0];
 
-        try {await fetch("http://localhost:8080/api/materias", {
+        try {await fetch(`${apiUrl}/api/materias`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

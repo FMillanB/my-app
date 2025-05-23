@@ -4,18 +4,19 @@ import { useState, useEffect } from 'react';
 
 export default function FetchUser() {
   const [users, setUsers] = useState([]);
+  const apiUrl = process.env.NEXT_API;
 
   useEffect(() => {
     fetchApi();
   }, []);
 
-  const fetchApi = async () => { await fetch("http://localhost:8080/api/usuarios")
+  const fetchApi = async () => { await fetch(`${apiUrl}/api/usuarios`)
     .then(res => res.json())
     .then(data => setUsers(data))
   }
 
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:8080/api/usuarios/${id}`, {
+    await fetch(`${apiUrl}/api/usuarios/${id}`, {
       method: "DELETE",
     });
     fetchApi();
