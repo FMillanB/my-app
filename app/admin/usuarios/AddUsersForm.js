@@ -10,13 +10,13 @@ export default function AddUserForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const router = useRouter();
-    const apiUrl = process.env.NEXT_API;
+    const apiUrl = process.env.NEXT_BACKAPI;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!name.trim() || !age || !rol) return;
 
-        try {await fetch(`${apiUrl}/api/usuarios`, {
+        try {await fetch(`https://backend-davi.onrender.com/api/usuarios`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -13,13 +13,13 @@ export default function AddMateriasForm({ usuarioID }) {
         fetchApi();
     }, []);
     
-    const fetchApi = async () => { await fetch(`${apiUrl}/api/materias`)
+    const fetchApi = async () => { await fetch(`https://backend-davi.onrender.com/api/materias`)
         .then(res => res.json())
         .then(data => setMaterias(data))
     }
 
     const fetchMaterias = async () => {
-        const res = await fetch(`${apiUrl}/api/usuarios/${usuarioID}/materias`)
+        const res = await fetch(`https://backend-davi.onrender.com/api/usuarios/${usuarioID}/materias`)
         const data = await res.json()
         setMaterias(data)
     }
@@ -42,7 +42,7 @@ export default function AddMateriasForm({ usuarioID }) {
             return;
         }
 
-        try {await fetch(`${apiUrl}/api/materias/${materiaID}/agregar-estudiante/${usuarioID}`, {
+        try {await fetch(`https://backend-davi.onrender.com/api/materias/${materiaID}/agregar-estudiante/${usuarioID}`, {
             method: "POST",
         });
         

@@ -4,19 +4,19 @@ import { useState, useEffect } from 'react';
 
 export default function FetchUser() {
   const [users, setUsers] = useState([]);
-  const apiUrl = process.env.NEXT_API;
+  const apiUrl = process.env.NEXT_BACKAPI;
 
   useEffect(() => {
     fetchApi();
   }, []);
 
-  const fetchApi = async () => { await fetch(`${apiUrl}/api/usuarios`)
+  const fetchApi = async () => { await fetch(`https://backend-davi.onrender.com/api/usuarios`)
     .then(res => res.json())
     .then(data => setUsers(data))
   }
 
   const handleDelete = async (id) => {
-    await fetch(`${apiUrl}/api/usuarios/${id}`, {
+    await fetch(`https://backend-davi.onrender.com/api/usuarios/${id}`, {
       method: "DELETE",
     });
     fetchApi();

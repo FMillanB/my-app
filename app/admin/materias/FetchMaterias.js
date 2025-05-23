@@ -4,20 +4,20 @@ import { useState, useEffect } from 'react';
 
 export default function FetchMaterias() {
   const [materias, setMaterias] = useState([]);
-  const apiUrl = process.env.NEXT_API;
+  const apiUrl = process.env.NEXT_BACKAPI;
 
   useEffect(() => {
     fetchApi();
   }, []);
 
-  const fetchApi = async () => { await fetch(`${apiUrl}/api/materias`)
+  const fetchApi = async () => { await fetch(`https://backend-davi.onrender.com/api/materias`)
     .then(res => res.json())
     .then(data => setMaterias(data))
   }
 
   const handleDelete = async (id) => {
     if (!confirm("¿Estás seguro de que deseas eliminar esta materia?")) return;
-    await fetch(`${apiUrl}/api/materias/${id}`, {
+    await fetch(`https://backend-davi.onrender.com/api/materias/${id}`, {
       method: "DELETE",
     });
     fetchApi();

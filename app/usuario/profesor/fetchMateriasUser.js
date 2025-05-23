@@ -11,7 +11,7 @@ export default function FetchMaterias({ usuarioID }) {
 
   useEffect(() => {
     const fetchMaterias = async () => {
-      const res = await fetch(`${apiUrl}/api/usuarios/${usuarioID}/materiasImpartidas`)
+      const res = await fetch(`https://backend-davi.onrender.com/api/usuarios/${usuarioID}/materiasImpartidas`)
       const data = await res.json()
       setMaterias(data)
     }

@@ -7,7 +7,7 @@ export async function loginUsuario(_, formData) {
   const password = formData.get('password');
   const apiUrl = process.env.NEXT_API;
 
-  const res = await fetch(`${apiUrl}/api/usuarios`);
+  const res = await fetch(`https://backend-davi.onrender.com/api/usuarios`);
   const users = await res.json();
 
   const found = users.find(

@@ -8,7 +8,7 @@ export default function FetchMateriasEstudiante({ usuarioID }) {
 
   useEffect(() => {
     const fetchMaterias = async () => {
-      const res = await fetch(`${apiUrl}/api/usuarios/${usuarioID}/materias`)
+      const res = await fetch(`https://backend-davi.onrender.com/api/usuarios/${usuarioID}/materias`)
       const data = await res.json()
       setMaterias(data)
     }
@@ -16,14 +16,14 @@ export default function FetchMateriasEstudiante({ usuarioID }) {
   }, [usuarioID])
 
   const fetchApi = async () => {
-    const res = await fetch(`${apiUrl}/api/usuarios/${usuarioID}/materias`)
+    const res = await fetch(`https://backend-davi.onrender.com/api/usuarios/${usuarioID}/materias`)
     const data = await res.json()
     setMaterias(data)
   }
 
   const handleDelete = async (id) => {
     if (!confirm("¿Estás seguro de que deseas eliminar esta materia?")) return;
-    await fetch(`${apiUrl}/api/materias/${id}/eliminar-estudiante/${usuarioID}`, {
+    await fetch(`https://backend-davi.onrender.com/api/materias/${id}/eliminar-estudiante/${usuarioID}`, {
       method: "DELETE",
     });
     fetchApi();
