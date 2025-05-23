@@ -22,12 +22,12 @@ export default function FetchUser() {
   }
 
   return (
-    <div>
-      <ul className="list-inside list-disc text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+    <div className="flex flex-col items-center justify-center py-8 text-black">
+      <ul className="list-inside list-disc text-1xl text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
         {users.map((user) => (
-          <li key={user.id} onClick={() => handleDelete(user.id)} className="mb-2 tracking-[-.01em]">
-            {user.name} - {user.age} years old
-            <button className="ml-2 text-red-500 hover:text-red-700">
+          <li key={user.id} className="mb-2 tracking-[-.01em]">
+            {user.name} - {user.age} años
+            <button onClick={() => handleDelete(user.id)} className="ml-2 text-red-200 hover:text-red-700 font-bold cursor-pointer">
                 Delete
               </button>
           </li>

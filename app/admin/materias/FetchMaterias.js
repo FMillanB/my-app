@@ -16,19 +16,19 @@ export default function FetchMaterias() {
 
   const handleDelete = async (id) => {
     if (!confirm("¿Estás seguro de que deseas eliminar esta materia?")) return;
-    await fetch(`http://localhost:8080/api/usuarios/${id}`, {
+    await fetch(`http://localhost:8080/api/materias/${id}`, {
       method: "DELETE",
     });
     fetchApi();
   }
 
   return (
-    <div>
-      <ul className="list-inside list-disc text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+    <div className="flex flex-col items-center justify-center py-8 text-black">
+      <ul className="list-inside list-disc text-1xl text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
         {materias.map((materia) => (
-          <li key={materia.id} onClick={() => handleDelete(materia.id)} className="mb-2 tracking-[-.01em]">
-            {materia.name} - {materia.profesor} years old
-            <button className="ml-2 text-red-500 hover:text-red-700">
+          <li key={materia.id} className="mb-2 tracking-[-.01em]">
+            {materia.nombre} - {materia.profesor ? materia.profesor.name : "Sin profesor"}
+            <button onClick={() => handleDelete(materia.id)} className="ml-2 text-red-200 hover:text-red-700 font-bold cursor-pointer">
                 Delete
               </button>
           </li>

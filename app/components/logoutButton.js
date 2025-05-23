@@ -7,8 +7,8 @@ export default function LogoutButton() {
 
   const handleLogout = async () => {
     await logoutUsuario();        // Borra la cookie
-    router.push('/login');        // Redirige al login
+    router.push('/');        // Redirige al login
   };
 
-  return <button onClick={handleLogout}>Cerrar sesión</button>;
+  return <button className='text-black cursor-pointer' onClick={handleLogout}>Cerrar sesión</button>;
 }

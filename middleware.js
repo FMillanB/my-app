@@ -8,11 +8,11 @@ export function middleware(request) {
   const pathname = request.nextUrl.pathname;
 
   if (!user && pathname.startsWith('/admin')) {
-    return NextResponse.redirect(new URL('/login', request.url));
+    return NextResponse.redirect(new URL('/', request.url));
   }
 
   if (user?.rol !== 'ADMIN' && pathname.startsWith('/admin')) {
-    return NextResponse.redirect(new URL('/login', request.url));
+    return NextResponse.redirect(new URL('/usuario', request.url));
   }
 
   return NextResponse.next();

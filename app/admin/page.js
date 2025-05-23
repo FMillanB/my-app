@@ -9,17 +9,21 @@ export default async function AdminHomePage() {
     const adminName = user ? user.name : "Usuario";
 
     return (
-        <div style={{ maxWidth: 500, margin: "40px auto", padding: 24, border: "1px solid #eee", borderRadius: 8 }}>
+        <div className="text-black max-w-[500px] mx-auto my-10 p-6 border border-gray-100 rounded-lg shadow-md shadow-black/60">
             <h1>Bienvenido, {adminName}</h1>
-            <p>¡Hola {adminName}! Selecciona una opción para gestionar el sistema:</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 32 }}>
+            <p>¡Hola {adminName}! Selecciona una opción para gestionar en el sistema:</p>
+            <div className="flex flex-col gap-4 mt-8">
                 <Link href="/admin/usuarios">
-                    <button style={{ padding: "12px 24px", fontSize: 16, cursor: "pointer" }}>
+                    <button
+                        className="bg-gray-300 text-black px-6 py-3 text-base rounded transition-colors duration-200 hover:bg-black hover:text-white cursor-pointer"
+                    >
                         Gestionar Usuarios
                     </button>
                 </Link>
                 <Link href="/admin/materias">
-                    <button style={{ padding: "12px 24px", fontSize: 16, cursor: "pointer" }}>
+                    <button
+                        className="bg-gray-300 text-black px-6 py-3 text-base rounded transition-colors duration-200 hover:bg-black hover:text-white cursor-pointer"
+                    >
                         Gestionar Materias
                     </button>
                 </Link>

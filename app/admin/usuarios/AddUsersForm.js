@@ -7,6 +7,8 @@ export default function AddUserForm() {
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
     const [rol, setRol] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const router = useRouter();
 
     const handleSubmit = async (e) => {
@@ -22,7 +24,7 @@ export default function AddUserForm() {
         });
         
         alert("Usuario agregado correctamente");
-        router.push("/usuarios");
+        router.refresh("/admin/usuarios");
         // Limpiar los campos después de enviar el formulario
         setName("");
         setAge("");
@@ -33,14 +35,14 @@ export default function AddUserForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex gap-2">
+        <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center py-8 text-black gap-2">
             <input
                 type="text"
                 placeholder="Nombre"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="border border-solid border-black/[.08] dark:border-white/[.145] rounded-full px-4 py-2 w-full sm:w-[400px]"
+                className="border border-solid border-black/[.08] dark:border-black rounded-full px-4 py-2 w-full sm:w-[400px]"
             />
             <input
                 type="number"
@@ -48,13 +50,13 @@ export default function AddUserForm() {
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
                 required
-                className="border border-solid border-black/[.08] dark:border-white/[.145] rounded-full px-4 py-2 w-full sm:w-[400px]"
+                className="border border-solid border-black/[.08] dark:border-black rounded-full px-4 py-2 w-full sm:w-[400px]"
             />
             <select
                 value={rol}
                 onChange={(e) => setRol(e.target.value)}
                 required
-                className="border border-solid border-black/[.08] dark:border-white/[.145] rounded-full px-4 py-2 w-full sm:w-[400px]"
+                className="border border-solid border-black/[.08] dark:border-black rounded-full px-4 py-2 w-full sm:w-[400px]"
             >
                 <option value="" disabled>
                     Selecciona un rol
@@ -62,7 +64,23 @@ export default function AddUserForm() {
                 <option value="ESTUDIANTE">Estudiante</option>
                 <option value="PROFESOR">Profesor</option>
             </select>
-            <button type="submit" className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto">
+            <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="border border-solid border-black/[.08] dark:border-black rounded-full px-4 py-2 w-full sm:w-[400px]"
+            />
+            <input
+                type="text"
+                placeholder="Contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="border border-solid border-black/[.08] dark:border-black rounded-full px-4 py-2 w-full sm:w-[400px]"
+            />
+            <button type="submit" className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-black text-background gap-2 hover:bg-black dark:hover:bg-[#ccc] font-medium text-sm sm:text-base hover:text-black h-10 sm:h-12 px-4 sm:px-5 sm:w-auto">
                 Agregar Usuario
             </button>
         </form>
