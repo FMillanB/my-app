@@ -21,7 +21,7 @@ export default function AddUserForm() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ name, age: Number(age), rol }),
+            body: JSON.stringify({ name, age: Number(age), rol, email, password }),
         });
         
         alert("Usuario agregado correctamente");
@@ -30,6 +30,8 @@ export default function AddUserForm() {
         setName("");
         setAge("");
         setRol("");
+        setEmail("");
+        setPassword("");
         } catch (error) {
             alert("Error al agregar usuario");
         }

@@ -57,7 +57,7 @@ export default function AddMateriasForm() {
     };
 
     return (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center py-4 text-black">
             <form onSubmit={handleSubmit} className="flex gap-2 text-black">
                 <input
                     type="text"

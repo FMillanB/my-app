@@ -14,6 +14,7 @@ export default function FetchMateriasEstudiante({ materiaID }) {
         const res = await fetch(`https://backend-davi.onrender.com/api/materias/${materiaID}`)
         const data = await res.json()
         setEstudiantes(data.estudiantes)
+        console.log(data.estudiantes)
     }
 
 
