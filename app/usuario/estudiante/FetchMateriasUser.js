@@ -29,6 +29,14 @@ export default function FetchMateriasEstudiante({ usuarioID }) {
     fetchApi();
   }
 
+  if (materias.length === 0) {
+    return (
+      <div className="text-black text-center">
+        <p className="text-sm/6">No tienes materias registradas.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="text-black">
       <ul className="list-inside list-disc text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">

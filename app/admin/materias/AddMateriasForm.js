@@ -9,7 +9,6 @@ export default function AddMateriasForm() {
     const [profesores, setProfesores] = useState([]);
     const [materias, setMaterias] = useState([]);
     const router = useRouter();
-    const apiUrl = process.env.NEXT_BACKAPI;
     
     useEffect(() => {
         fetchProfesores();
